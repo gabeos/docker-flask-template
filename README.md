@@ -23,6 +23,11 @@ Otherwise use DB_URI or DB_*. DB_URI takes precedence:
 
 | Section | Variable Name | Default | Details |
 | --- | --- | --- | --- | 
+| Flask | | | |
+| | CREATE_FLASK_DB | true | Automatically create database tables for app. Won't overwrite your DB when container is restarted based on presence of /var/www/flask/.bootstrap |
+| User Info | | | |
+| | PROJECT_NAME | Flask Template | Name you would like to show up in the templates |
+| | USER_EMAIL | contact@example.com | Email to provide in the `contact` link (`mailto:$USER_EMAIL`) |
 | Server | | | |
 | | SERVER_NAME | '_' | Nginx 'server_name' directive. |
 | Mail | | | |
@@ -41,9 +46,3 @@ Otherwise use DB_URI or DB_*. DB_URI takes precedence:
 | | DB_PORT | | Port of DB |
 | | DB_TYPE | | Type of database, 'mysql' or 'postgresql'. Optional if DB port is standard mysql (3306) or postgres (5432) port |
 
-## Flask
-* CREATE_FLASK_DB : use `python manage.py ...` commands to make databases with SQLAlchemy. Defaults to `false`. Set to `true` to enable.
-
-## User Info
-* PROJECT_NAME : Name you would like to show up in the templates
-* USER_EMAIL : Email to provide in the `contact` link (`mailto:$USER_EMAIL`)
