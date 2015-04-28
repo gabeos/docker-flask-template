@@ -23,14 +23,14 @@ Otherwise use DB_URI or DB_*. DB_URI takes precedence:
 
 | Section | Variable Name | Default | Details |
 | --- | --- | --- | --- | 
-| Flask | | | |
+| *Flask* | | | |
 | | CREATE_FLASK_DB | true | Automatically create database tables for app. Won't overwrite your DB when container is restarted based on presence of /var/www/flask/.bootstrap |
-| User Info | | | |
+| *User Info* | | | |
 | | PROJECT_NAME | Flask Template | Name you would like to show up in the templates |
 | | USER_EMAIL | contact@example.com | Email to provide in the `contact` link (`mailto:$USER_EMAIL`) |
-| Server | | | |
+| *Server* | | | |
 | | SERVER_NAME | '_' | Nginx 'server_name' directive. |
-| Mail | | | |
+| *Mail* | | | |
 | | MAIL_SERVER | | SMTP server |
 | | MAIL_PORT | 587 | Port |
 | | MAIL_TLS | true | Use TLS for communication with mail server |
@@ -38,7 +38,7 @@ Otherwise use DB_URI or DB_*. DB_URI takes precedence:
 | | MAIL_USER | admin | Login username for SMTP server |
 | | MAIL_PASS | | Login password for SMTP server |
 | | MAIL_SENDER | admin@example.com | Email address to send mail from |
-| DB | | | |
+| *DB* | | | |
 | | DB_URI | | Specify whole URI in one environment variable |
 | | DB_USER | | Login user for DB |
 | | DB_PASS | | Password for user@db |
