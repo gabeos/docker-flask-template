@@ -36,7 +36,7 @@ class Config(object):
             dbtype = self.__get_db_type_from_port()
             return "%s://%s:%s@%s/%s" % (dbtype, userdb, dbpass, dbaddr, dbdb)
         else:
-            return "sqlite:////var/www/flask/app.%s.db" % project_name
+            return "sqlite:////var/www/flask/app.db"
 
     def __get_blueprints_from_env():
         if os.environ.get('BLUEPRINTS'):
@@ -64,7 +64,7 @@ class Config(object):
     SECRET_KEY = os.environ['FLASK_SECRET_KEY']
 
     # LOGGING
-    LOGGER_NAME = "%s_log" % project_name
+    LOGGER_NAME = "%s_log" % app
     LOG_FILENAME = "/var/log/flask/flask.log"
     LOG_LEVEL = logging.INFO
     LOG_FORMAT = "%(asctime)s %(levelname)s\t: %(message)s" # used by logging.Formatter
@@ -79,7 +79,7 @@ class Config(object):
     MAIL_DEBUG = False
     MAIL_USERNAME = os.getenv("MAIL_USER","admin")
     MAIL_PASSWORD = os.getenv("MAIL_PASS","admin")
-    DEFAULT_MAIL_SENDER = os.getenv("MAIL_SENDER","example@%s.com" % project_name)
+    DEFAULT_MAIL_SENDER = os.getenv("MAIL_SENDER","example@example.com" % )
 
     # see example/ for reference
     # ex: BLUEPRINTS = ['blog']  # where app is a Blueprint instance
@@ -92,7 +92,7 @@ class DevConfig(Config):
     DEBUG = True  # we want debug level output
     MAIL_DEBUG = True
     SQLALCHEMY_ECHO = True  # we want to see sqlalchemy output
-    SQLALCHEMY_DATABASE_URI = "sqlite:////var/tmp/%s_dev.sqlite" % project_name
+    SQLALCHEMY_DATABASE_URI = "sqlite:////var/tmp/app_dev.sqlite"
 
 
 # config class used during tests
@@ -100,4 +100,4 @@ class Test(Config):
     TESTING = True
     WTF_CSRF_ENABLED = False
     SQLALCHEMY_ECHO = False
-    SQLALCHEMY_DATABASE_URI = "sqlite:////tmp/%s_test.sqlite" % project_name
+    SQLALCHEMY_DATABASE_URI = "sqlite:////tmp/app_test.sqlite"
