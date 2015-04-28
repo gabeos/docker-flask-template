@@ -64,7 +64,7 @@ class Config(object):
     SECRET_KEY = os.environ['FLASK_SECRET_KEY']
 
     # LOGGING
-    LOGGER_NAME = "%s_log" % app
+    LOGGER_NAME = "app_log" 
     LOG_FILENAME = "/var/log/flask/flask.log"
     LOG_LEVEL = logging.INFO
     LOG_FORMAT = "%(asctime)s %(levelname)s\t: %(message)s" # used by logging.Formatter
@@ -79,7 +79,7 @@ class Config(object):
     MAIL_DEBUG = False
     MAIL_USERNAME = os.getenv("MAIL_USER","admin")
     MAIL_PASSWORD = os.getenv("MAIL_PASS","admin")
-    DEFAULT_MAIL_SENDER = os.getenv("MAIL_SENDER","example@example.com" % )
+    DEFAULT_MAIL_SENDER = os.getenv("MAIL_SENDER","example@example.com")
 
     # see example/ for reference
     # ex: BLUEPRINTS = ['blog']  # where app is a Blueprint instance

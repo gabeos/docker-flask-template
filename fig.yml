@@ -1,0 +1,33 @@
+postgresdata:
+    image: postgres
+    entrypoint: echo
+    command: "Flask Postgres Data Container"
+postgres:
+    image: postgres
+    volumes_from:
+        - postgresdata
+    environment:
+        POSTGRES_USER: flask
+        POSTGRES_PASSWORD: flask
+flaskdata:
+    image: gabeos/docker-flask-template
+    entrypoint: echo
+    command: "Flask Data Container"
+flask:
+    image: gabeos/docker-flask-template
+    volumes_from:
+        - flaskdata
+    links:
+        - "postgres:db"
+    environment:
+        SERVER_NAME: example.com
+        MAIL_SERVER: smtp.mail.com
+        MAIL_PORT: 587
+        MAIL_TLS: "true"
+        MAIL_USER: admin
+        MAIL_PASS: secret-password
+        MAIL_SENDER: admin@example.com
+        CREATE_FLASK_DB: "true"
+        USER_MAIL: contact@example.com
+        PROJECT_NAME: Flask Template
+
