@@ -1,0 +1,2 @@
+#!/bin/bash
+exec tail -F -n 0 /var/log/flask/flask.log

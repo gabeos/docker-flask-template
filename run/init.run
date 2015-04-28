@@ -1,0 +1,48 @@
+#!/bin/bash
+
+function update_nginx {
+    SRVNAME=${SERVER_NAME:-"_"}
+    sed -i -e "s/@SERVER_NAME@/$SRVNAME/" /etc/nginx/sites-available/flask.nginx.conf
+}
+
+function generate_secret_key {
+    if [[ -z $FLASK_SECRET_KEY ]]; then
+        openssl rand -base64 32 >/etc/container_environment/FLASK_SECRET_KEY
+        echo "FLASK_SECRET_KEY set to $(cat /etc/container_environment/FLASK_SECRET_KEY)"
+    fi
+}
+
+function create_db {
+    if [[ $CREATE_FLASK_DB == true ]]; then
+        pushd /var/www/flask
+        echo "Creating databases..."
+        python manage.py db init
+        python manage.py db migrate
+        python manage.py db upgrade
+        popd
+    fi
+}
+
+function replace_meta_info {
+    PROJ_NAME=${PROJECT_NAME:-"Flask Template"}
+    EMAIL=${USER_EMAIL:-"contact@example.com"}
+    sed -i -e "s/PROJECT_NAME/$PROJ_NAME/" /var/www/flask/app/templates/layout.html
+    sed -i -e "s/PROJECT_NAME/$PROJ_NAME/" /var/www/flask/app/templates/public/home.html
+    sed -i -e "s/PROJECT_NAME/$PROJ_NAME/" /var/www/flask/app/templates/nav.html
+    sed -i -e "s/USER_EMAIL/$EMAIL/" /var/www/flask/app/templates/footer.html
+}
+
+function bootstrap {
+    generate_secret_key
+}
+
+function run {
+    update_nginx
+    replace_meta_info
+}
+
+if [[ ! -e /var/www/flask/.bootstrap ]]; then
+    bootstrap
+fi
+
+run
