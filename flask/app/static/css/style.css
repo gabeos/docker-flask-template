@@ -29,9 +29,14 @@ textarea {
 
 .navbar-form input[type="text"],
 .navbar-form input[type="password"] {
-  width: 180px;
+  width: 100%;
 }
 
+.navbar-form input[type="submit"],
+.navbar-form a.button,
+.login {
+  width: 450%;
+}
 
 .form-register {
   width: 50%;

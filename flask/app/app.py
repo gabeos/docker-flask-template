@@ -2,7 +2,7 @@
 '''The app module, containing the app factory function.'''
 from flask import Flask, render_template
 
-from settings import Config
+from config import Config
 from assets import assets
 from extensions import (
     bcrypt,
@@ -32,7 +32,7 @@ def create_app(config_object=Config):
 def register_extensions(app):
     assets.init_app(app)
     bcrypt.init_app(app)
-    cache.init_app(app)
+    cache.init_app(app, app.config['CACHE_ENV'] )
     db.init_app(app)
     login_manager.init_app(app)
     debug_toolbar.init_app(app)

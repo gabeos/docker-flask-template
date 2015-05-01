@@ -1,10 +1,10 @@
 <footer>
   <small>
-    <ul class="footer-nav">
+    <ul class="footer u-pull-right">
 
       <li><a href="{{ url_for('public.about') }}">About</a></li>
 
-      <li><a href="mailto:USER_EMAIL">Contact</a></li>
+      <li><a href="mailto:{{ config.USER_EMAIL }}">Contact</a></li>
     </ul>
   </small>
 </footer>
