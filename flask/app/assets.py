@@ -12,6 +12,7 @@ css = Bundle(
 js = Bundle(
     "libs/d3/d3.js",
     "libs/jQuery/dist/jquery.js",
+    "libs/underscore/underscore.js",
     "js/plugins.js",
     filters='jsmin',
     output="public/js/common.js"
