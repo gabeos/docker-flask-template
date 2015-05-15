@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from app.app import create_app
-from app.config import Config, DevConfig
+from app.settings import Config, DevConfig
 
 def test_production_config():
     app = create_app(ProdConfig)

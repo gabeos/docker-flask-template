@@ -1,37 +1,49 @@
 
-<nav class="nav" role="navigation">
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
-  <div class="row">
-    <div class="one column">
-      <a href="{{ url_for('public.home') }}">Home</a>
-    </div>
-    <div class="one column">
-      <a href="{{ url_for('public.about') }}">About</a>
-    </div>
+
+  <!-- Brand and toggle get grouped for better mobile display -->
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="{{ url_for('public.home') }}">
+
+      PROJECT_NAME
+
+    </a>
+  </div>
+  <!-- Collect the nav links, forms, and other content for toggling -->
+  <div class="collapse navbar-collapse navbar-ex1-collapse">
+    <ul class="nav navbar-nav">
+      <li><a href="{{ url_for('public.home') }}">Home</a></li>
+      <li><a href="{{ url_for('public.about') }}">About</a></li>
+    </ul>
     {% if current_user and current_user.is_authenticated() %}
-    <ul class="ten columns u-pull-right">
+    <ul class="nav navbar-nav navbar-right">
         <li>
-            <p class="nav-text"><a href="{{ url_for('user.members') }}">Logged in as {{ current_user.username }}</a></p>
+            <p class="navbar-text"><a class="navbar-link" href="{{ url_for('user.members') }}">Logged in as {{ current_user.username }}</a></p>
         </li>
-        <li><a href="{{ url_for('public.logout') }}"><i class="logout"></i></a></li>
+        <li><a class="navbar-link" href="{{ url_for('public.logout') }}"><i class="fa fa-sign-out"></i></a></li>
 
     </ul>
     {% elif form %}
-    <div class="four columns offset-by-six columns">
-    <form id="loginForm" method="POST" action="/" role="login">
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="{{ url_for('public.register') }}">Create account</a></li>
+    </ul>
+    <form id="loginForm" method="POST" class="navbar-form form-inline navbar-right" action="/" role="login">
       {{ form.hidden_tag() }}
-      <div class="two columns">
-        {{ form.username(placeholder="Username", class_="u-pull-right") }}
-        {{ form.password(placeholder="Password", class_="u-pull-right") }}
+      <div class="form-group">
+        {{ form.username(placeholder="Username", class_="form-control") }}
+        {{ form.password(placeholder="Password", class_="form-control") }}
       </div>
-      <div class="two columns">
-      	<input class="login" type="submit" value="Log in">
-      	<a class="button login" href="{{ url_for('public.register') }}">Create account</a>
-      </div>
+      <button type="submit" class="btn btn-default">Log in</button>
     </form>
-    </div>
     {% endif %}
-  </div><!-- /.row -->
+  </div><!-- /.navbar-collapse -->
   </div><!-- /.container -->
 </nav>
 

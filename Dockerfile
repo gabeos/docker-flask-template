@@ -34,8 +34,6 @@ COPY run/lf.uwsgi.run /etc/service/uwsgi-log-forwarder/run
 COPY run/nginx.run /etc/service/nginx/run
 COPY run/uwsgi.run /etc/service/uwsgi/run
 
-WORKDIR /var/www/flask
-
 EXPOSE 80
 VOLUME /var/www/flask
 CMD ["/sbin/my_init"]

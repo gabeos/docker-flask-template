@@ -5,7 +5,7 @@ import os
 import pytest
 from webtest import TestApp
 
-from app.config import TestConfig
+from app.settings import TestConfig
 from app.app import create_app
 from app.database import db as _db
 

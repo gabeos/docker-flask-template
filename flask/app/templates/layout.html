@@ -8,21 +8,21 @@
 <head>
   <meta charset="utf-8">
 
-  <title>{% block page_title %} {{ config.PROJECT_NAME }} {% endblock %}</title>
+  <title>{% block page_title %} PROJECT_NAME {% endblock %}</title>
 
   <meta name="description" content="{% block meta_description %}{% endblock %}">
   <meta name="author" content="{% block meta_author %}{% endblock %}">
-  <meta charset="utf-8">
 
   <!-- Mobile viewport optimized: h5bp.com/viewport -->
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href='//fonts.googleapis.com/css?family=Raleway:400,300,600' rel='stylesheet' type='text/css'>
+  <meta name="viewport" content="width=device-width">
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='libs/font-awesome4/css/font-awesome.min.css') }}">
   {% assets "css_all" %}
     <link rel="stylesheet" href="{{ ASSET_URL }}">
   {% endassets %}
 
   {% block css %}{% endblock %}
-  <link rel="icon" type="image/png" href="{{ url_for('static', filename='public/img/favicon.png') }}">
+
 </head>
 <body class="{% block body_class %}{% endblock %}">
 {% block body %}
@@ -37,14 +37,14 @@
     {% with messages = get_flashed_messages(with_categories=true) %}
     {% if messages %}
     <div class="row">
-      <div class="ten columns">
+      <div class="col-md-12">
         {% for category, message in messages %}
         <div class="alert alert-{{ category }}">
           <a class="close" title="Close" href="#" data-dismiss="alert">&times;</a>
          {{message}}
         </div><!-- end .alert -->
         {% endfor %}
-      </div><!-- end eleven.columns-->
+      </div><!-- end col-md -->
     </div><!-- end row -->
         {% endif %}
     {% endwith %}

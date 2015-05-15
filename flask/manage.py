@@ -8,7 +8,7 @@ from flask_migrate import MigrateCommand
 
 from app.app import create_app
 from app.user.models import User
-from app.config import DevConfig, Config
+from app.settings import DevConfig, Config
 from app.database import db
 
 if os.environ.get("APP_ENV") == 'prod':
