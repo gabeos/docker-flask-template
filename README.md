@@ -1,6 +1,10 @@
 
 # Flask Template in Docker
 
+## Note on Branches
+
+It's worth noting that there are currently two branches here. One (master) with Bootstrap 3 as the CSS framework, the other with the more minimal Skeleton CSS. I'm not sure that everything works well in the demo app on the skeleton branch, but it's there if you want the install with Skeleton to hack away on.
+
 ## What is this?
 
 A fully configured and ready to hack flask template loaded up with Bootstrap 3, jQuery, and a bunch of Flask Extensions, served via nginx and uWSGI.
